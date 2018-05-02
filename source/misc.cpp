@@ -108,6 +108,17 @@ const string engine_info() {
 	}
 	else
 	{
+#if defined(NNUE_ENGINE)
+		ss  << "id name " << ENGINE_NAME
+			<< (Is64Bit ? " 64" : " 32")
+			<< TARGET_CPU
+#if defined(FOR_TOURNAMENT)
+			<< " TOURNAMENT"
+#endif
+			<< " (based on " << BASE_ENGINE_NAME << ' '
+			<< ENGINE_VERSION << ")" << endl
+			<< "id author by yaneurao, extended by ynasu87" << endl;
+#else
 		ss  << "id name " << ENGINE_NAME << ' '
 			<< EVAL_TYPE_NAME << ' '
 			<< ENGINE_VERSION << setfill('0')
@@ -118,6 +129,7 @@ const string engine_info() {
 #endif
 			<< endl 
 			<< "id author by yaneurao" << endl;
+#endif
 	}
 
 	return ss.str();

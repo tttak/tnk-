@@ -1,6 +1,7 @@
 # > Select YaneuraOu edition below.
 
-YANEURAOU_EDITION = YANEURAOU_2018_OTAFUKU_ENGINE
+YANEURAOU_EDITION = NNUE_ENGINE
+#YANEURAOU_EDITION = YANEURAOU_2018_OTAFUKU_ENGINE
 #YANEURAOU_EDITION = HELP_MATE_ENGINE
 #YANEURAOU_EDITION = MATE_ENGINE
 #YANEURAOU_EDITION = YANEURAOU_2018_GOKU_ENGINE
@@ -143,6 +144,15 @@ ifeq ($(YANEURAOU_EDITION),MATE_ENGINE)
 	SOURCES += engine/mate-engine/mate-search.cpp
 endif
 
+ifeq ($(YANEURAOU_EDITION),NNUE_ENGINE)
+	SOURCES += eval/nn/evaluate_nn.cpp                                         \
+	           eval/nn/evaluate_nn_learner.cpp                                 \
+	           eval/nn/nn_test_command.cpp                                     \
+	           eval/nn/features/k.cpp                                          \
+	           eval/nn/features/p.cpp                                          \
+	           eval/nn/features/half_kp.cpp                                    \
+	           eval/nn/features/half_relative_kp.cpp
+endif
 
 OBJECTS  = $(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))
 DEPENDS  = $(OBJECTS:.o=.d)

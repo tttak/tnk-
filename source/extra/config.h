@@ -326,6 +326,44 @@
 #endif
 
 
+#ifdef NNUE_ENGINE
+#define ENGINE_NAME "NNUE-v1.0"
+#define EVAL_NN
+
+#define USE_EVAL_HASH
+#define USE_SEE
+#define USE_MATE_1PLY
+#define USE_ENTERING_KING_WIN
+#define USE_TIME_MANAGEMENT
+#define KEEP_PIECE_IN_GENERATE_MOVES
+#define ONE_PLY_EQ_1
+
+// デバッグ絡み
+//#define ASSERT_LV 3
+//#define USE_DEBUG_ASSERT
+
+#define ENABLE_TEST_CMD
+// 学習絡みのオプション
+#define USE_SFEN_PACKER
+// 学習機能を有効にするオプション。
+#define EVAL_LEARN
+
+// 定跡生成絡み
+#define ENABLE_MAKEBOOK_CMD
+// 評価関数を共用して複数プロセス立ち上げたときのメモリを節約。(いまのところWindows限定)
+//#define USE_SHARED_MEMORY_IN_EVAL
+// パラメーターの自動調整絡み
+#define USE_GAMEOVER_HANDLER
+//#define LONG_EFFECT_LIBRARY
+
+// GlobalOptionsは有効にしておく。
+#define USE_GLOBAL_OPTIONS
+
+#define BASE_ENGINE_NAME "YaneuraOu 2018 Otafuku"
+#define YANEURAOU_2018_OTAFUKU_ENGINE
+#endif  // #ifdef NNUE_ENGINE
+
+
 #ifdef LOCAL_GAME_SERVER
 #define ENGINE_NAME "YaneuraOu Local Game Server"
 #define EVAL_MATERIAL
@@ -475,7 +513,7 @@ extern GlobalOptions_ GlobalOptions;
 #if !defined (USE_DEBUG_ASSERT)
 #define ASSERT(X) { if (!(X)) *(int*)1 = 0; }
 #else
-#define ASSERT(X) { if (!(X)) { std::cout << "\nError : ASSERT(" << #X << ")" << std::endl; \
+#define ASSERT(X) { if (!(X)) { std::cout << "\nError : ASSERT(" << #X << "), " << __FILE__ << "(" << __LINE__ << "): " << __func__ << std::endl; \
  std::this_thread::sleep_for(std::chrono::microseconds(3000)); *(int*)1 =0;} }
 #endif
 
@@ -717,6 +755,8 @@ inline int MKDIR(std::string dir_name)
 #define EVAL_TYPE_NAME "KPP_KKPT_FV_VAR"
 #elif defined(EVAL_NABLA)
 #define EVAL_TYPE_NAME "NABLA V2"
+#elif defined(EVAL_NN)
+#define EVAL_TYPE_NAME "NN"
 #else
 #define EVAL_TYPE_NAME ""
 #endif
@@ -743,7 +783,7 @@ inline int MKDIR(std::string dir_name)
 // 7. FV_VAR方式のリファレンス実装として、EVAL_KPP_KKPT_FV_VARがあるので、そのソースコードを見ること。
 
 // あらゆる局面でP(駒)の数が増えないFV38と呼ばれる形式の差分計算用。
-#if defined(EVAL_KPPT) || defined(EVAL_KPP_KKPT) || defined(EVAL_KPPPT) || defined(EVAL_KPPP_KKPT) || defined(EVAL_KKPP_KKPT) || defined(EVAL_KKPPT) || defined(EVAL_HELICES)
+#if defined(EVAL_KPPT) || defined(EVAL_KPP_KKPT) || defined(EVAL_KPPPT) || defined(EVAL_KPPP_KKPT) || defined(EVAL_KKPP_KKPT) || defined(EVAL_KKPPT) || defined(EVAL_HELICES) || defined(EVAL_NN)
 #define USE_FV38
 #endif
 

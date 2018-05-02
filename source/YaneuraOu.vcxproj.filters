@@ -68,6 +68,24 @@
     <Filter Include="リソース ファイル\engine\2018-otafuku-engine">
       <UniqueIdentifier>{1822c23d-4270-4155-8c9b-ed15821d29ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\eval\nn">
+      <UniqueIdentifier>{f8a06299-f305-4fab-af37-06d5d05b9690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nn\architectures">
+      <UniqueIdentifier>{f5b056d1-3ff2-456f-b355-2e1bf03c8047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nn\features">
+      <UniqueIdentifier>{834f320f-c9fd-430a-9768-3a781b14b0b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nn\layers">
+      <UniqueIdentifier>{4c668a86-42fd-403c-9b17-80360d9c8db9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nn\trainer">
+      <UniqueIdentifier>{2891115c-d34a-4fcb-8512-c135a8450793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nn\trainer\features">
+      <UniqueIdentifier>{6e8ef4d1-31b3-42c5-b6a5-a0b811d671bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="evaluate.h">
@@ -189,6 +207,93 @@
     </ClInclude>
     <ClInclude Include="engine\2018-otafuku-engine\2018-otafuku-param.h">
       <Filter>リソース ファイル\engine\2018-otafuku-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\evaluate_nn.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\evaluate_nn_learner.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\nn_accumulator.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\nn_architecture.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\nn_common.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\nn_feature_transformer.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\nn_test_command.h">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\feature_set.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\features_common.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\half_kp.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\half_relative_kp.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\index_list.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\k.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\features\p.h">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\layers\affine_transform.h">
+      <Filter>リソース ファイル\eval\nn\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\layers\clipped_relu.h">
+      <Filter>リソース ファイル\eval\nn\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\layers\input_slice.h">
+      <Filter>リソース ファイル\eval\nn\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\layers\sum.h">
+      <Filter>リソース ファイル\eval\nn\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\trainer.h">
+      <Filter>リソース ファイル\eval\nn\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\trainer_affine_transform.h">
+      <Filter>リソース ファイル\eval\nn\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\trainer_clipped_relu.h">
+      <Filter>リソース ファイル\eval\nn\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\trainer_feature_transformer.h">
+      <Filter>リソース ファイル\eval\nn\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\trainer_input_slice.h">
+      <Filter>リソース ファイル\eval\nn\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\trainer_sum.h">
+      <Filter>リソース ファイル\eval\nn\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\architectures\halfkp_256x2-32-32.h">
+      <Filter>リソース ファイル\eval\nn\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\architectures\k-p_256x2-32-32.h">
+      <Filter>リソース ファイル\eval\nn\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\features\factorizer.h">
+      <Filter>リソース ファイル\eval\nn\trainer\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\features\factorizer_feature_set.h">
+      <Filter>リソース ファイル\eval\nn\trainer\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nn\trainer\features\factorizer_half_kp.h">
+      <Filter>リソース ファイル\eval\nn\trainer\features</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +443,27 @@
     </ClCompile>
     <ClCompile Include="engine\2018-otafuku-engine\2018-otafuku-search.cpp">
       <Filter>リソース ファイル\engine\2018-otafuku-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\evaluate_nn.cpp">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\evaluate_nn_learner.cpp">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\nn_test_command.cpp">
+      <Filter>リソース ファイル\eval\nn</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\features\half_kp.cpp">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\features\half_relative_kp.cpp">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\features\k.cpp">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nn\features\p.cpp">
+      <Filter>リソース ファイル\eval\nn\features</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

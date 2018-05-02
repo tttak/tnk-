@@ -15,6 +15,11 @@
 using namespace EvalLearningTools;
 #endif
 
+#if defined(EVAL_NN)
+#include "../eval/evaluate_common.h"
+#include "../eval/nn/nn_test_command.h"
+#endif
+
 // ----------------------------------
 //  USI拡張コマンド "perft"(パフォーマンステスト)
 // ----------------------------------
@@ -2109,6 +2114,9 @@ void test_cmd(Position& pos, istringstream& is)
 #endif
 #ifdef USE_KIF_CONVERT_TOOLS
 	else if (param == "kifconvert") test_kif_convert_tools(pos, is); // 現局面からの全合法手を各種形式で出力チェック
+#endif
+#if defined(EVAL_NN)
+	else if (param == "nn") Eval::NN::TestCommand(pos, is);
 #endif
 	else {
 		// --- usage
