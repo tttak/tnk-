@@ -1799,6 +1799,55 @@ void LearnerThink::calc_loss(size_t thread_id, u64 done)
 #endif
 }
 
+// 振り飛車を指すように評価値を操作
+Value calc_furibisha_score(Value deep_value, Position& pos, u16 gamePly) {
+	// 序盤
+	if (gamePly <= 60) {
+		int sign = (pos.side_to_move() == BLACK) ? 1 : -1;
+
+		// ----- 先手
+
+		// 先手の2八飛車
+		if (pos.piece_on(SQ_28) == B_ROOK) {
+			deep_value -= 500 * sign;
+		}
+
+		// 先手の5八飛車～8八飛車
+		if (pos.piece_on(SQ_58) == B_ROOK
+			|| pos.piece_on(SQ_68) == B_ROOK
+			|| pos.piece_on(SQ_78) == B_ROOK
+			|| pos.piece_on(SQ_88) == B_ROOK) {
+			deep_value += 500 * sign;
+		}
+
+		// 先手の2七歩
+		if (pos.piece_on(SQ_27) == B_PAWN) {
+			deep_value += 500 * sign;
+		}
+
+		// ----- 後手
+
+		// 後手の8二飛車
+		if (pos.piece_on(SQ_82) == W_ROOK) {
+			deep_value += 500 * sign;
+		}
+
+		// 後手の5二飛車～2二飛車
+		if (pos.piece_on(SQ_52) == W_ROOK
+			|| pos.piece_on(SQ_42) == W_ROOK
+			|| pos.piece_on(SQ_32) == W_ROOK
+			|| pos.piece_on(SQ_22) == W_ROOK) {
+			deep_value -= 500 * sign;
+		}
+
+		// 後手の8三歩
+		if (pos.piece_on(SQ_83) == W_PAWN) {
+			deep_value -= 500 * sign;
+		}
+	}
+
+	return deep_value;
+}
 
 void LearnerThink::thread_worker(size_t thread_id)
 {
@@ -1976,6 +2025,10 @@ void LearnerThink::thread_worker(size_t thread_id)
 
 		// 深い探索の評価値
 		auto deep_value = (Value)ps.score;
+
+		// 振り飛車を指すように評価値を操作
+		deep_value = calc_furibisha_score(deep_value, pos, ps.gamePly);
+		ps.score = deep_value;
 
 		// mini batchのほうが勾配が出ていいような気がする。
 		// このままleaf nodeに行って、勾配配列にだけ足しておき、あとでrmseの集計のときにAdaGradしてみる。
